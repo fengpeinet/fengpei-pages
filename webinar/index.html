@@ -1,182 +1,834 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>專屬推廣說明會 - 立即報名</title>
-  <meta name="description" content="零成本報名推廣說明會，立刻搶佔名額！">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Outfit:wght@800;900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="多品牌分潤創業系統分享會，零成本報名，立刻搶佔名額！" />
+  <title>多品牌分潤創業系統分享會 · 風霈國際傳媒</title>
+
+  <style>
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: #080b14;
+      color: #fff;
+      font-family: -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Layout wrapper ─── */
+    .page {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ═══════════════════════════════
+       HERO
+       ═══════════════════════════════ */
+    .hero {
+      background: #080b14;
+      padding: 28px 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-brand {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(200,168,75,0.1);
+      border: 1px solid rgba(200,168,75,0.4);
+      border-radius: 4px;
+      padding: 5px 12px;
+      margin-bottom: 18px;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #c8a84b;
+      flex-shrink: 0;
+    }
+    .hero-badge-text {
+      font-size: 13px;
+      color: #c8a84b;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .hero-title-small {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .hero-title-main {
+      font-size: 36px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .hero-event-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #c8a84b;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+    .hero-tag {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.06);
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 4px 10px;
+    }
+    .hero-cta {
+      display: block;
+      background: #c8a84b;
+      color: #080b14;
+      font-size: 17px;
+      font-weight: 800;
+      text-align: center;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+      transition: opacity 0.15s;
+    }
+    .hero-cta:hover { opacity: 0.88; }
+
+    /* ─── Countdown ─── */
+    .countdown-bar {
+      background: #0c0f1c;
+      border-top: 1px solid rgba(200,168,75,0.2);
+      border-bottom: 1px solid rgba(200,168,75,0.2);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .countdown-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+    .countdown-digits {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .cd-block { text-align: center; }
+    .cd-num {
+      font-size: 26px;
+      font-weight: 800;
+      color: #c8a84b;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      display: block;
+      min-width: 2ch;
+    }
+    .cd-lbl {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-top: 2px;
+    }
+    .cd-sep {
+      font-size: 24px;
+      font-weight: 800;
+      color: rgba(200,168,75,0.4);
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+    .countdown-ended {
+      font-size: 14px;
+      color: #c8a84b;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* ═══════════════════════════════
+       IMAGE STRIPS
+       ═══════════════════════════════ */
+    .strip { display: block; width: 100%; }
+    .section-gap {
+      height: 24px;
+      background: #040608;
+      border-top: 0.5px solid rgba(255,255,255,0.04);
+      border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    }
+
+    /* ─── Mid CTA ─── */
+    .mid-cta-wrap {
+      background: #0a0d18;
+      padding: 16px 20px;
+      border-top: 1px solid rgba(200,168,75,0.25);
+    }
+    .mid-cta-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+    .mid-cta-btn {
+      display: block;
+      background: #c8a84b;
+      color: #080b14;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+      padding: 13px 20px;
+      border-radius: 8px;
+      letter-spacing: 0.03em;
+      transition: opacity 0.15s;
+    }
+    .mid-cta-btn:hover { opacity: 0.88; }
+
+    /* ═══════════════════════════════
+       VIDEO
+       ═══════════════════════════════ */
+    .video-section {
+      background: #0a0d18;
+      padding: 20px 20px 4px;
+      border-top: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .video-label {
+      font-size: 13px;
+      color: rgba(200,168,75,0.6);
+      letter-spacing: 0.1em;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    /* ═══════════════════════════════
+       FORM
+       ═══════════════════════════════ */
+    .form-section {
+      background: #0c0f1c;
+      padding: 28px 20px 32px;
+      border-top: 2px solid rgba(200,168,75,0.35);
+    }
+    .form-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(200,168,75,0.1);
+      border: 0.5px solid rgba(200,168,75,0.35);
+      border-radius: 4px;
+      padding: 3px 9px;
+      margin-bottom: 10px;
+    }
+    .form-eyebrow span {
+      font-size: 12px;
+      color: #c8a84b;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    .form-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .form-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+      display: block;
+      letter-spacing: 0.04em;
+    }
+    .form-label .req { color: #c8a84b; margin-left: 2px; }
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 15px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+      font-family: inherit;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-input:focus { border-color: rgba(200,168,75,0.6); }
+
+    /* session radio */
+    .session-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+      display: block;
+      letter-spacing: 0.04em;
+    }
+    .session-label .req { color: #c8a84b; margin-left: 2px; }
+    .session-options { display: flex; flex-direction: column; gap: 8px; }
+    .session-option { display: none; }
+    .session-option-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 13px 14px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+    }
+    .session-option:checked + .session-option-label {
+      border-color: rgba(200,168,75,0.6);
+      background: rgba(200,168,75,0.08);
+      color: #fff;
+    }
+    .session-radio-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.15s;
+    }
+    .session-option:checked + .session-option-label .session-radio-dot {
+      border-color: #c8a84b;
+      background: rgba(200,168,75,0.2);
+    }
+    .session-radio-inner {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #c8a84b;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .session-option:checked + .session-option-label .session-radio-inner { opacity: 1; }
+
+    .form-submit {
+      display: block;
+      width: 100%;
+      background: #c8a84b;
+      color: #080b14;
+      font-size: 17px;
+      font-weight: 800;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      letter-spacing: 0.03em;
+      font-family: inherit;
+      transition: opacity 0.15s;
+    }
+    .form-submit:hover { opacity: 0.88; }
+    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .form-privacy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .form-success.show { display: block; }
+    .success-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(200,168,75,0.15);
+      border: 1.5px solid rgba(200,168,75,0.5);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 22px;
+    }
+    .success-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .success-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .success-line-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #06C755;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 22px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+
+    /* ═══════════════════════════════
+       FOOTER
+       ═══════════════════════════════ */
+    .site-footer {
+      background: #040608;
+      padding: 20px 20px 100px;
+      border-top: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.14em;
+      text-align: center;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+    .footer-link {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      transition: color 0.15s;
+    }
+    .footer-link:hover { color: #c8a84b; }
+    .footer-link + .footer-link::before {
+      content: '|';
+      margin-right: 8px;
+      color: rgba(255,255,255,0.15);
+      pointer-events: none;
+    }
+
+    /* ═══════════════════════════════
+       BOTTOM STICKY BAR (mobile)
+       ═══════════════════════════════ */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #0c0f1c;
+      border-top: 1px solid rgba(200,168,75,0.35);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 99;
+    }
+    .sticky-bar-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+      flex: 1;
+      min-width: 0;
+    }
+    .sticky-bar-line {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(6,199,85,0.12);
+      border: 1px solid rgba(6,199,85,0.35);
+      color: #06C755;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 10px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity 0.15s;
+    }
+    .sticky-bar-line:hover { opacity: 0.88; }
+    .sticky-bar-btn {
+      background: #c8a84b;
+      color: #080b14;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 10px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity 0.15s;
+    }
+    .sticky-bar-btn:hover { opacity: 0.88; }
+
+    @media (min-width: 768px) {
+      .sticky-bar { display: none; }
+    }
+
+    .form-body.hide { display: none; }
+  </style>
 </head>
-
 <body>
-  <div class="app-container">
 
-    <header class="hero-section">
-      <div class="badge">FREE TICKET</div>
-      <h1 class="main-title">掌握未來趨勢<br><span class="highlight-pink">流量爆發</span>說明會</h1>
-      <p class="subtitle">限量 0 元報名，額滿即止</p>
-      <a href="#form" class="scroll-cta">立即搶位 ↓</a>
-    </header>
+<div class="page">
 
-    <section class="video-section">
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/R4f5CSB_vts"
-          title="說明會介紹影片"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <div class="hero-brand">風霈國際傳媒 · FENGPEINET</div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">FREE TICKET · 免費線上說明會</span>
+    </div>
+    <p class="hero-title-small">讓你擁有的，不只是收入</p>
+    <h1 class="hero-title-main">而是選擇的自由</h1>
+    <p class="hero-event-name">多品牌分潤創業系統分享會</p>
+    <p class="hero-sub">從 0 到 1，打造屬於你的自媒體事業<br>新手也能開始 · 完全免費參加</p>
+    <div class="hero-tags">
+      <span class="hero-tag">系統AI帶貨</span>
+      <span class="hero-tag">分潤循環系統</span>
+      <span class="hero-tag">直播短影音社群變現</span>
+    </div>
+    <a href="#form" class="hero-cta">立即搶位 · 限量 0 元報名 ↓</a>
+  </section>
+
+  <!-- ═══════════════ COUNTDOWN ═══════════════ -->
+  <div class="countdown-bar">
+    <span class="countdown-label">距下一場說明會</span>
+    <div class="countdown-digits" id="countdown-digits">
+      <div class="cd-block">
+        <span class="cd-num" id="cd-d">--</span>
+        <span class="cd-lbl">天</span>
       </div>
-    </section>
-
-    <section class="image-strip">
-      <img src="strips/finalstrips/01.png" alt="">
-      <img src="strips/finalstrips/02.png" alt="">
-      <img src="strips/finalstrips/03.png" alt="">
-      <img src="strips/finalstrips/04.png" alt="">
-      <img src="strips/finalstrips/05.png" alt="">
-      <img src="strips/finalstrips/06.png" alt="">
-      <img src="strips/finalstrips/07.png" alt="">
-      <img src="strips/finalstrips/08.png" alt="">
-      <img src="strips/finalstrips/09.png" alt="">
-    </section>
-
-    <!-- 報名表單區 -->
-    <main class="form-section" id="form">
-      <div class="form-header">
-        <h2>立即卡位報名</h2>
-        <p>填寫下方資料，獲取免費入場資格</p>
+      <span class="cd-sep">:</span>
+      <div class="cd-block">
+        <span class="cd-num" id="cd-h">--</span>
+        <span class="cd-lbl">時</span>
       </div>
-
-      <form id="registrationForm" class="registration-form">
-        <div class="form-group">
-          <label for="entryName">姓名 <span class="required">*</span></label>
-          <input type="text" id="entryName" name="name" placeholder="請輸入您的真實姓名" required>
-        </div>
-
-        <div class="form-group">
-          <label for="entryPhone">聯絡電話 <span class="required">*</span></label>
-          <input type="tel" id="entryPhone" name="phone" placeholder="0912345678" required>
-        </div>
-
-        <div class="form-group">
-          <label for="entryEmail">Email <span class="required">*</span></label>
-          <input type="email" id="entryEmail" name="email" placeholder="需接收說明會連結" required>
-        </div>
-
-        <div class="form-group">
-          <label for="entryLineId">LINE ID <span class="optional">(選填)</span></label>
-          <input type="text" id="entryLineId" name="lineId" placeholder="方便活動前聯絡">
-        </div>
-
-        <div class="form-group">
-          <label for="entryReferrer">推薦人 <span class="optional">(選填)</span></label>
-          <input type="text" id="entryReferrer" name="referrer" placeholder="推薦您參加的朋友姓名">
-        </div>
-
-        <!-- 場次選擇 -->
-        <div class="form-group session-group">
-          <label>選擇場次 <span class="required">*</span></label>
-
-          <label class="radio-card">
-            <input type="radio" name="sessionDate" value="2026/06/16 20:00" required>
-            <div class="card-content">
-              <span class="session-name">第一場</span>
-              <span class="session-time">6/16 (二) 20:00</span>
-            </div>
-          </label>
-
-          <label class="radio-card">
-            <input type="radio" name="sessionDate" value="2026/06/18 14:00">
-            <div class="card-content">
-              <span class="session-name">第二場</span>
-              <span class="session-time">6/18 (四) 14:00</span>
-            </div>
-          </label>
-        </div>
-
-        <button type="submit" id="submitBtn" class="cta-button">
-          <span class="btn-text">立即報名</span>
-          <span class="btn-loader" style="display: none;">處理中...</span>
-        </button>
-        <p class="form-footer-note">送出表單代表您同意我們的隱私權政策，並同意接收系統發送之提醒信件。</p>
-      </form>
-
-      <!-- 成功訊息區 (預設隱藏) -->
-      <div id="successMessage" class="success-message" style="display: none;">
-        <div class="success-check">✓</div>
-        <h3>報名成功！</h3>
-        <p class="success-sub">確認信已寄至您的信箱<br>請記得查收並保存說明會連結</p>
-        <div class="success-divider"></div>
-        <p class="success-line-hint">加入官方 LINE，掌握最新活動資訊</p>
-        <a href="https://line.me/R/ti/p/@fp_media" target="_blank" rel="noopener" class="success-line-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="white">
-            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-          </svg>
-          加入好友
-        </a>
-        <button id="resetBtn" class="success-reset-btn">為其他人報名</button>
-
-        <div class="biz-card">
-          <p class="biz-card-label">認識風霈國際傳媒</p>
-          <a href="https://www.fpshop.tw/" target="_blank" rel="noopener" class="biz-link">
-            <span class="biz-icon">
-              <img src="logo-icon.png" alt="風電商">
-            </span>
-            <span class="biz-link-text">
-              <span class="biz-link-title">風電商官網</span>
-              <span class="biz-link-sub">fpshop.tw</span>
-            </span>
-            <span class="biz-link-arrow">→</span>
-          </a>
-          <a href="https://www.instagram.com/fengpeinet/" target="_blank" rel="noopener" class="biz-link">
-            <span class="biz-icon biz-icon--ig">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </span>
-            <span class="biz-link-text">
-              <span class="biz-link-title">Instagram</span>
-              <span class="biz-link-sub">@fengpeinet</span>
-            </span>
-            <span class="biz-link-arrow">→</span>
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=61560506886097&locale=zh_TW" target="_blank" rel="noopener" class="biz-link">
-            <span class="biz-icon biz-icon--fb">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </span>
-            <span class="biz-link-text">
-              <span class="biz-link-title">Facebook</span>
-              <span class="biz-link-sub">風霈國際傳媒</span>
-            </span>
-            <span class="biz-link-arrow">→</span>
-          </a>
-        </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block">
+        <span class="cd-num" id="cd-m">--</span>
+        <span class="cd-lbl">分</span>
       </div>
-
-    </main>
-
-    <footer class="app-footer">
-      <div class="watermark">FENGPEINET</div>
-    </footer>
+      <span class="cd-sep">:</span>
+      <div class="cd-block">
+        <span class="cd-num" id="cd-s">--</span>
+        <span class="cd-lbl">秒</span>
+      </div>
+    </div>
   </div>
 
-  <!-- 浮動報名按鈕 -->
-  <a href="#form" class="form-float-btn" aria-label="卡位">卡位</a>
+  <!-- ═══════════════ STRIP 01 ═══════════════ -->
+  <img class="strip" src="./strips/finalstrips/01.png" alt="星世代帶貨三維度" loading="lazy" />
 
-  <!-- 浮動 LINE 按鈕 -->
-  <a href="https://line.me/R/ti/p/@fp_media" target="_blank" rel="noopener" class="line-float-btn" aria-label="加入 LINE 官方帳號">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="white">
-      <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-    </svg>
+  <div class="section-gap"></div>
+
+  <!-- ═══════════════ STRIP 02 ═══════════════ -->
+  <img class="strip" src="./strips/finalstrips/02.png" alt="想增加收入卻不知道從哪開始" loading="lazy" />
+
+  <!-- CTA after 02 -->
+  <div class="mid-cta-wrap">
+    <p class="mid-cta-label">看到這裡了嗎？現在報名還有位置</p>
+    <a href="#form" class="mid-cta-btn">立即免費報名 →</a>
+  </div>
+
+  <div class="section-gap"></div>
+
+  <!-- ═══════════════ STRIP 03–06 ═══════════════ -->
+  <img class="strip" src="./strips/finalstrips/03.png" alt="" loading="lazy" />
+  <div class="section-gap"></div>
+  <img class="strip" src="./strips/finalstrips/04.png" alt="" loading="lazy" />
+  <div class="section-gap"></div>
+  <img class="strip" src="./strips/finalstrips/05.png" alt="" loading="lazy" />
+  <div class="section-gap"></div>
+  <img class="strip" src="./strips/finalstrips/06.png" alt="" loading="lazy" />
+
+  <!-- ═══════════════ VIDEO ═══════════════ -->
+  <div class="video-section">
+    <p class="video-label">— 說明會預告片 —</p>
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/R4f5CSB_vts"
+        title="多品牌分潤創業系統說明會預告"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- CTA after video -->
+  <div class="mid-cta-wrap">
+    <p class="mid-cta-label">影片看完了嗎？立刻預留你的席次</p>
+    <a href="#form" class="mid-cta-btn">立即免費報名 →</a>
+  </div>
+
+  <div class="section-gap"></div>
+
+  <!-- ═══════════════ STRIP 07–09 ═══════════════ -->
+  <img class="strip" src="./strips/finalstrips/07.png" alt="" loading="lazy" />
+  <div class="section-gap"></div>
+  <img class="strip" src="./strips/finalstrips/08.png" alt="" loading="lazy" />
+  <div class="section-gap"></div>
+  <img class="strip" src="./strips/finalstrips/09.png" alt="" loading="lazy" />
+
+  <!-- ═══════════════ FORM ═══════════════ -->
+  <section class="form-section" id="form">
+
+    <div class="form-eyebrow">
+      <span>立即卡位 · 名額有限，額滿即止</span>
+    </div>
+    <h2 class="form-title">立即卡位報名</h2>
+    <p class="form-subtitle">填寫下方資料，獲取免費入場資格</p>
+
+    <!-- success message -->
+    <div class="form-success" id="form-success">
+      <div class="success-icon">✓</div>
+      <p class="success-title">報名成功！</p>
+      <p class="success-sub">確認信已寄至您的信箱<br>請記得查收並保存說明會連結</p>
+      <a href="https://line.me/R/ti/p/@fp_media" class="success-line-btn" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.92 2 10.72c0 3.2 2.01 6.01 5.04 7.64-.17.64-.63 2.33-.72 2.69-.12.45.16.44.34.32.14-.09 2.22-1.51 3.12-2.13.39.06.79.09 1.22.09 5.52 0 10-3.92 10-8.72C22 5.92 17.52 2 12 2z"/></svg>
+        加入官方 LINE，掌握最新資訊
+      </a>
+      <br>
+      <a href="#form" id="register-again" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:underline;">為其他人報名</a>
+    </div>
+
+    <!-- form body -->
+    <div class="form-body" id="form-body">
+      <form id="signup-form" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="f-name">姓名<span class="req">*</span></label>
+          <input class="form-input" type="text" id="f-name" name="name" placeholder="請輸入您的姓名" required autocomplete="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-phone">聯絡電話<span class="req">*</span></label>
+          <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="請輸入您的手機號碼" required autocomplete="tel" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-email">Email<span class="req">*</span></label>
+          <input class="form-input" type="email" id="f-email" name="email" placeholder="請輸入您的 Email" required autocomplete="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-line">LINE ID <span style="opacity:0.5;font-size:10px;">選填</span></label>
+          <input class="form-input" type="text" id="f-line" name="lineId" placeholder="您的 LINE ID（選填）" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-referrer">推薦人 <span style="opacity:0.5;font-size:10px;">選填</span></label>
+          <input class="form-input" type="text" id="f-referrer" name="referrer" placeholder="推薦人姓名或 ID（選填）" />
+        </div>
+
+        <div class="form-group">
+          <span class="session-label">選擇場次<span class="req">*</span></span>
+          <div class="session-options">
+            <input class="session-option" type="radio" name="sessionDate" id="s1" value="2026/06/16 20:00" required />
+            <label class="session-option-label" for="s1">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第一場 &nbsp;6/16 (二) 20:00
+            </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s2" value="2026/06/18 14:00" />
+            <label class="session-option-label" for="s2">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第二場 &nbsp;6/18 (四) 14:00
+            </label>
+          </div>
+        </div>
+
+        <button class="form-submit" type="submit" id="submit-btn">立即報名</button>
+
+        <p class="form-privacy">送出表單代表您同意我們的隱私權政策，並同意接收系統發送之提醒信件。</p>
+
+      </form>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="site-footer">
+    <p class="footer-brand">FENGPEINET · 風霈國際傳媒</p>
+    <div class="footer-links">
+      <a class="footer-link" href="https://www.fpshop.tw/" target="_blank" rel="noopener">風電商官網 fpshop.tw</a>
+      <a class="footer-link" href="https://www.instagram.com/fengpeinet/" target="_blank" rel="noopener">Instagram @fengpeinet</a>
+      <a class="footer-link" href="https://www.facebook.com/profile.php?id=61560506886097&locale=zh_TW" target="_blank" rel="noopener">Facebook 風霈國際傳媒</a>
+    </div>
+  </footer>
+
+</div><!-- /page -->
+
+<!-- ═══════════════ BOTTOM STICKY BAR ═══════════════ -->
+<div class="sticky-bar" role="complementary" aria-label="快速報名">
+  <div class="sticky-bar-text">
+    多品牌分潤創業系統分享會<br>名額有限，額滿即止
+  </div>
+  <a href="https://line.me/R/ti/p/@fp_media" class="sticky-bar-line" target="_blank" rel="noopener" aria-label="加入官方 LINE">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="#06C755" aria-hidden="true"><path d="M12 2C6.48 2 2 5.92 2 10.72c0 3.2 2.01 6.01 5.04 7.64-.17.64-.63 2.33-.72 2.69-.12.45.16.44.34.32.14-.09 2.22-1.51 3.12-2.13.39.06.79.09 1.22.09 5.52 0 10-3.92 10-8.72C22 5.92 17.52 2 12 2z"/></svg>
+    加入LINE
   </a>
+  <a href="#form" class="sticky-bar-btn">立即報名 →</a>
+</div>
 
-  <script src="main.js"></script>
+<!-- ═══════════════ JS ═══════════════ -->
+<script>
+(function () {
+
+  /* ── Countdown ── */
+  var target = new Date('2026-06-16T20:00:00+08:00');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tickCountdown() {
+    var now  = new Date();
+    var diff = target - now;
+
+    if (diff <= 0) {
+      var digits = document.getElementById('countdown-digits');
+      if (digits) digits.innerHTML = '<span class="countdown-ended">說明會進行中</span>';
+      return;
+    }
+
+    var days  = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins  = Math.floor((diff % 3600000)  / 60000);
+    var secs  = Math.floor((diff % 60000)    / 1000);
+
+    var dEl = document.getElementById('cd-d');
+    var hEl = document.getElementById('cd-h');
+    var mEl = document.getElementById('cd-m');
+    var sEl = document.getElementById('cd-s');
+
+    if (dEl) dEl.textContent = pad(days);
+    if (hEl) hEl.textContent = pad(hours);
+    if (mEl) mEl.textContent = pad(mins);
+    if (sEl) sEl.textContent = pad(secs);
+  }
+
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  /* ── Form submit ── */
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyZFb_XfG8rvCmVUCD-fujdxCEn2S9AUNP7qtqgNVwkWPI0QhtuFWsZ19C2zP8W60pb/exec';
+  var form        = document.getElementById('signup-form');
+  var submitBtn   = document.getElementById('submit-btn');
+  var formBody    = document.getElementById('form-body');
+  var formSuccess = document.getElementById('form-success');
+  var againLink   = document.getElementById('register-again');
+
+  if (new URLSearchParams(location.search).has('preview')) {
+    if (formBody)    formBody.classList.add('hide');
+    if (formSuccess) formSuccess.classList.add('show');
+  }
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name    = document.getElementById('f-name').value.trim();
+      var phone   = document.getElementById('f-phone').value.trim();
+      var email   = document.getElementById('f-email').value.trim();
+      var session = form.querySelector('input[name="sessionDate"]:checked');
+
+      if (!name || !phone || !email || !session) {
+        alert('請填寫姓名、電話、Email 並選擇場次');
+        return;
+      }
+
+      submitBtn.textContent = '處理中...';
+      submitBtn.disabled    = true;
+
+      var payload = {
+        name:        name,
+        phone:       phone,
+        email:       email,
+        lineId:      document.getElementById('f-line').value.trim(),
+        referrer:    document.getElementById('f-referrer').value.trim(),
+        sessionDate: session.value,
+        timestamp:   new Date().toISOString()
+      };
+
+      fetch(SCRIPT_URL, {
+        method:  'POST',
+        mode:    'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload)
+      }).then(function () {
+        showSuccess();
+      }).catch(function () {
+        alert('報名發生錯誤，請稍後再試或聯絡承辦單位！');
+        submitBtn.textContent = '立即報名';
+        submitBtn.disabled    = false;
+      });
+    });
+  }
+
+  function showSuccess() {
+    if (formBody)    formBody.classList.add('hide');
+    if (formSuccess) formSuccess.classList.add('show');
+    document.getElementById('form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  if (againLink) {
+    againLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (formBody)    formBody.classList.remove('hide');
+      if (formSuccess) formSuccess.classList.remove('show');
+      if (form) form.reset();
+      submitBtn.textContent = '立即報名';
+      submitBtn.disabled    = false;
+    });
+  }
+
+})();
+</script>
+
 </body>
-
 </html>
