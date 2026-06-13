@@ -210,9 +210,7 @@ function sendRegistrationSuccessEmail(to, name, date) {
         <p style="margin: 4px 0;">場次時間：<strong>${date}</strong></p>
       </div>
 
-      <p style="margin: 0 0 16px 0;">我們將在活動<strong>前一天與當天</strong>，另行寄送 Zoom 會議連結與活動提醒，請留意信箱！</p>
-
-      <p style="margin: 0 0 48px 0;">如有任何問題，歡迎透過官方 LINE 聯繫我們：<a href="https://lin.ee/RHr2pNi">https://lin.ee/RHr2pNi</a></p>
+      <p style="margin: 0 0 24px 0;">我們將在活動<strong>前一天與當天</strong>，另行寄送 Zoom 會議連結與活動提醒，請留意信箱！</p>
 
       <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 
