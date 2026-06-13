@@ -436,6 +436,11 @@
       text-align: center;
       margin-bottom: 12px;
       text-transform: uppercase;
+      transition: color 0.3s ease;
+      cursor: default;
+    }
+    .footer-brand:hover {
+      color: #c8a84b;
     }
     .footer-links {
       display: flex;
@@ -507,6 +512,9 @@
     }
     .sticky-bar-btn:hover { opacity: 0.88; }
 
+    @media (min-width: 768px) {
+      .sticky-bar { display: none; }
+    }
 
     .form-body.hide { display: none; }
   </style>
@@ -585,25 +593,6 @@
   <div class="section-gap"></div>
   <img class="strip" src="./strips/finalstrips/06.png" alt="" loading="lazy" />
 
-  <!-- ═══════════════ VIDEO ═══════════════ -->
-  <div class="video-section">
-    <p class="video-label">— 說明會預告片 —</p>
-    <div class="video-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/R4f5CSB_vts"
-        title="多品牌分潤創業系統說明會預告"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-  </div>
-
-  <!-- CTA after video -->
-  <div class="mid-cta-wrap">
-    <p class="mid-cta-label">影片看完了嗎？立刻預留你的席次</p>
-    <a href="#form" class="mid-cta-btn">立即免費報名 →</a>
-  </div>
 
   <div class="section-gap"></div>
 

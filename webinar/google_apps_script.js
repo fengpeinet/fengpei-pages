@@ -6,21 +6,13 @@
 //   一、 營運設定區 (連結與圖片)
 // ==========================================
 
-// 【修改點 1】 設定不同日期的 Zoom 連結
-const ZOOM_LINK_6_16 = "https://zoom.us/j/YOUR_ZOOM_ID_1";
-const ZOOM_LINK_6_18 = "https://zoom.us/j/YOUR_ZOOM_ID_2";
+const ZOOM_LINK_6_16 = "https://us06web.zoom.us/j/3909390259?omn=84699032198";
+const ZOOM_LINK_6_18 = "https://us06web.zoom.us/j/3909390259?omn=86322017358";
 
-/**
- * 【修改點 2】 頂部海報圖片
- */
-const POSTER_IMAGE_URL = "https://lh3.googleusercontent.com/d/1YTTlQtkoCd3KL00IVZda3j_S61NkM0wu";
-
-/**
- * 【修改點 3】 內容區圖片 (文字下方)
- */
+const HEAD_IMAGE_URL = "https://lh3.googleusercontent.com/d/1XG6Co4hBQ0r0Yk5c5Zc-I3zhHftUYt3B";
+const FOOTER_IMAGE_URL = "https://lh3.googleusercontent.com/d/1MAo2woNkcN7-LYjjoL6ZMdlFIToLyz-s";
+const POSTER_IMAGE_URL = "https://lh3.googleusercontent.com/d/1-unnfEgNAHtFiD9cAhKPLy_cpGVSVJJ0";
 const CONTENT_IMAGE_URL = "https://lh3.googleusercontent.com/d/1njxgyVqOTcnSp4KdC7jk4uWeouwhMZDw";
-
-// 【修改點 4】 指定工作表名稱
 const SHEET_NAME = "工作表1";
 
 
@@ -60,18 +52,18 @@ function sendScheduledEmails() {
 
   for (let i = 1; i < data.length; i++) {
     const row = data[i];
-    const userName = row[1];    // B 欄
-    const userEmail = row[3];   // D 欄
-    const rawDate = row[6];     // G 欄
-    const isDayBeforeReminded = row[7]; // H 欄
-    const isDayOfReminded = row[8];     // I 欄
+    const userName = row[1];
+    const userEmail = row[3];
+    const rawDate = row[6];
+    const isDayBeforeReminded = row[7];
+    const isDayOfReminded = row[8];
 
     if (!userName || !userEmail || !rawDate) {
       console.log("第 " + (i + 1) + " 列資料不完整，跳過。");
       continue;
     }
 
-    // 日期標準化
+    // 日期標準化（用於比對）
     let targetDateStr = "";
     if (rawDate instanceof Date) {
       targetDateStr = Utilities.formatDate(rawDate, timeZone, "yyyy-M-d");
@@ -83,14 +75,22 @@ function sendScheduledEmails() {
       }
     }
 
+    // 顯示用日期（保留時間，去除"台北"）
+    let displayDate = "";
+    if (rawDate instanceof Date) {
+      displayDate = Utilities.formatDate(rawDate, timeZone, "yyyy/MM/dd HH:mm");
+    } else {
+      displayDate = rawDate.toString().replace(/台北/g, "").trim();
+    }
+
     console.log("正在檢查: " + userName + " | 場次: " + targetDateStr);
 
     let zoomLink = targetDateStr.includes("-6-18") ? ZOOM_LINK_6_18 : ZOOM_LINK_6_16;
 
-    // --- 檢查「今日提醒」 ---
+    // --- 今日提醒 ---
     if (targetDateStr === todayStr) {
       if (!isDayOfReminded || isDayOfReminded === "FALSE" || isDayOfReminded === false) {
-        sendReminderEmail(userEmail, userName, targetDateStr, zoomLink, "【今日提醒】");
+        sendReminderEmail(userEmail, userName, displayDate, zoomLink, "今天");
         sheet.getRange(i + 1, 9).setValue(true);
         console.log("   >>> [成功] 已寄出今日提醒信");
       } else {
@@ -98,10 +98,10 @@ function sendScheduledEmails() {
       }
     }
 
-    // --- 檢查「明日提醒」 ---
+    // --- 明日提醒 ---
     if (targetDateStr === tomorrowStr) {
       if (!isDayBeforeReminded || isDayBeforeReminded === "FALSE" || isDayBeforeReminded === false) {
-        sendReminderEmail(userEmail, userName, targetDateStr, zoomLink, "【明日提醒】");
+        sendReminderEmail(userEmail, userName, displayDate, zoomLink, "明天");
         sheet.getRange(i + 1, 8).setValue(true);
         console.log("   >>> [成功] 已寄出明日提醒信");
       } else {
@@ -118,51 +118,104 @@ function sendScheduledEmails() {
 //   三、 精美信件 HTML 排版
 // ==========================================
 
-function sendReminderEmail(to, name, date, link, prefix) {
-  const subject = prefix + " 風霈學院 × 蝦皮 AI 攻略班說明會連結";
+function sendReminderEmail(to, name, displayDate, link, dayWord) {
+  const subject = `📣 ${dayWord}見！多品牌分潤創業系統分享會 活動提醒`;
+  const footerUrl = "https://lh3.googleusercontent.com/d/1MAo2woNkcN7-LYjjoL6ZMdlFIToLyz-s";
+  const headUrl = "https://lh3.googleusercontent.com/d/1XG6Co4hBQ0r0Yk5c5Zc-I3zhHftUYt3B";
+  const brandLogoUrl = "https://lh3.googleusercontent.com/d/12c_FvDGcLxbMlDR4caLLjeElunPRiOrB";
   const htmlBody = `
-    <div style="font-family: 'Microsoft JhengHei', sans-serif; color: #333; line-height: 1.8; max-width: 600px; margin: 0 auto;">
-      <img src="${POSTER_IMAGE_URL}" alt="海報" style="width: 100%; max-width: 600px; border-radius: 8px; margin-bottom: 20px;">
-      <p>親愛的 <strong>${name}</strong> 同學好：</p>
-      <p>本週的<strong>「風霈學院 × 蝦皮 AI 攻略班」</strong>線上研討會即將在 ${prefix.includes("今日") ? "今天" : "明天"} 開始了！</p>
-      <p>面對技術的不斷快速更迭，你是不是也常常因為要追新工具而感到焦慮呢？<br>其實，在變動中我們更應該找到那些「不變」的核心！</p>
-      <p>這場分享將帶你理解大腦處理資訊的天性，拆解這些困境：</p>
-      <ul style="color: #555;">
-        <li>為什麼明明學了方法、拿了證照，遇到真實問題卻解決不了？</li>
-        <li>為什麼越優化反而越忙？</li>
-        <li>如何找回在雜事中被磨損的專注力？</li>
+    <div style="font-family: 'Microsoft JhengHei', Arial, sans-serif; color: #333; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+
+      <img src="${headUrl}" alt="多品牌分潤創業系統分享會" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 24px;">
+
+      <p style="margin: 0 0 8px 0;"><strong>${name}</strong> 您好：</p>
+      <p style="margin: 0 0 20px 0;">多品牌分潤創業系統分享會<strong>${dayWord}</strong>就要開始囉！</p>
+
+      <!-- 活動資訊 -->
+      <p style="font-weight: bold; margin: 0 0 8px 0;">✅ 活動資訊</p>
+      <p style="margin: 4px 0 4px 16px;">活動名稱：<strong>多品牌分潤創業系統分享會</strong></p>
+      <p style="margin: 4px 0 4px 16px;">活動時間：<strong>${displayDate}</strong></p>
+      <p style="margin: 4px 0 20px 16px;">活動形式：線上 Zoom</p>
+
+      <!-- 你將會了解 -->
+      <p style="font-weight: bold; margin: 0 0 8px 0;">✅ 這場分享會，你將會了解</p>
+      <ul style="margin: 0 0 20px 0; padding-left: 20px;">
+        <li style="margin-bottom: 6px;">多品牌分潤的運作邏輯，如何透過多元品牌建立<strong>穩定收入來源</strong></li>
+        <li style="margin-bottom: 6px;">從零開始搭建屬於自己的分潤系統，<strong>不需要囤貨、不需要技術背景</strong></li>
+        <li style="margin-bottom: 6px;">一般人也能透過這套系統創造<strong>副業收入</strong>，甚至建立被動收益</li>
+        <li style="margin-bottom: 6px;">現場開放提問，協助你釐清<strong>最適合自己的起步方式</strong></li>
       </ul>
-      <p>當你掌握了人類大腦不變的運作規律，才能在科技浪潮中精準運用 AI 輔助，建立一套穩健的模式。</p>
-      <img src="${CONTENT_IMAGE_URL}" alt="內容" style="width: 100%; max-width: 600px; border-radius: 8px; margin: 20px 0;">
-      <div style="background-color: #fff2f0; padding: 20px; border-radius: 10px; border: 1px solid #ffccc7;">
-        <p style="margin-top: 0; color: #ff4d4f;"><strong>請依照下面簡單三步驟就可參加：</strong></p>
-        <ol>
-          <li><strong>下載會議軟體：</strong>我們使用「Zoom」作為線上遠端教學軟體。</li>
-          <li><strong>點擊下方按鈕：</strong>直接進入線上研討會教室。</li>
-          <li><strong>準時出席：</strong>活動當天請提前 10 分鐘進入測試設備。</li>
+
+      <!-- 橘色框：三步驟 + Zoom 按鈕 -->
+      <div style="border: 2px solid #ff6600; border-radius: 8px; padding: 16px 20px; margin: 0 0 20px 0; background-color: #fff8f0;">
+        <p style="margin: 0 0 10px 0; color: #ff6600; font-weight: bold;">請依照下面簡單三步驟就可參加：</p>
+        <ol style="margin: 0 0 20px 0; padding-left: 20px;">
+          <li style="margin-bottom: 8px;"><strong>下載會議軟體：</strong>我們使用「Zoom」作為線上遠端教學軟體。</li>
+          <li style="margin-bottom: 8px;"><strong>點擊下方按鈕：</strong>直接進入線上研討會教室。</li>
+          <li style="margin-bottom: 8px;"><strong>準時出席：</strong>活動當天請提前 10 分鐘進入測試設備。</li>
         </ol>
-        <p style="text-align: center; margin-bottom: 0; margin-top: 20px;">
-          <a href="${link}" style="background-color: #ff4d4f; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 18px;">立即進入 Zoom 研討會</a>
+        <p style="text-align: center; margin: 0;">
+          <a href="${link}" style="background-color: #ff6600; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 16px;">立即進入 Zoom 研討會</a>
         </p>
       </div>
-      <p style="margin-top: 30px;">怕沒有跟上的活動嗎？快快加入我們的「風霈行事曆」～</p>
-      <p><strong>風霈學院 FENGPEINET 敬上</strong></p>
+
+      <!-- 參加須知 -->
+      <p style="font-weight: bold; margin: 0 0 8px 0;">✅ 參加須知</p>
+      <ul style="margin: 0 0 20px 0; padding-left: 20px;">
+        <li style="margin-bottom: 6px;">請於活動開始前 <strong>10 分鐘</strong>進入會議室，以免錯過開場內容</li>
+        <li style="margin-bottom: 6px;">線上分享，請提前確認網路與設備，<strong>建議使用電腦觀看效果較佳</strong></li>
+        <li style="margin-bottom: 6px;">建議準備筆記工具，活動中會分享重點內容與資源連結</li>
+      </ul>
+
+      <p style="margin: 0 0 20px 0;">期待這場分享會能帶給您新的啟發與方向，我們活動當天見！</p>
+
+      <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+
+      <table style="width: 100%; max-width: 600px; margin: 0 0 24px 0; border-collapse: collapse;">
+        <tr>
+          <td style="width: 180px; vertical-align: middle; padding-right: 16px;">
+            <img src="${brandLogoUrl}" alt="風霈國際傳媒" style="display: block; width: 160px; height: auto;">
+          </td>
+          <td style="vertical-align: middle;">
+            <p style="margin: 0 0 6px 0; font-size: 14px;">如有問題歡迎詢問官方 LINE：<a href="https://lin.ee/RHr2pNi">https://lin.ee/RHr2pNi</a></p>
+            <p style="margin: 0; color: #999; font-size: 13px;">※ 此信件為系統自動發送，請勿直接回覆此信件。</p>
+          </td>
+        </tr>
+      </table>
+
+      <img src="${footerUrl}" alt="" style="width: 100%; max-width: 600px; display: block;">
+
     </div>
   `;
   MailApp.sendEmail({ to: to, subject: subject, htmlBody: htmlBody });
 }
 
 function sendRegistrationSuccessEmail(to, name, date) {
-  const subject = "【風霈學院】恭喜您報名成功！";
+  const subject = "✅ 您已成功報名「多品牌分潤創業系統分享會」";
   const htmlBody = `
-    <div style="font-family: 'Microsoft JhengHei', sans-serif; color: #333; line-height: 1.8; max-width: 600px; margin: 0 auto;">
-      <img src="${POSTER_IMAGE_URL}" alt="海報" style="width: 100%; max-width: 600px; border-radius: 8px; margin-bottom: 20px;">
-      <h2 style="color: #ff4d4f;">報名成功通知</h2>
-      <p>親愛的 <strong>${name}</strong> 同學您好：</p>
-      <p>我們已收到您的報名資訊，確認報名場次為：<strong>${date}</strong></p>
-      <p>我們將會在說明會<strong>前一天與當天</strong>寄送 Zoom 會議連結給您。</p>
-      <img src="${CONTENT_IMAGE_URL}" alt="內容" style="width: 100%; max-width: 600px; border-radius: 8px; margin-top: 20px;">
-      <p style="margin-top: 20px;">祝您有美好的一天！<br><strong>風霈學院 FENGPEINET 團隊 敬上</strong></p>
+    <div style="font-family: 'Microsoft JhengHei', Arial, sans-serif; color: #333; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+
+      <img src="${POSTER_IMAGE_URL}" alt="多品牌分潤創業系統分享會" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 24px;">
+
+      <p style="margin: 0 0 8px 0;"><strong>${name}</strong> 您好：</p>
+      <p style="margin: 0 0 20px 0;">感謝您報名 <strong>多品牌分潤創業系統分享會</strong>，您的報名已成功完成！</p>
+
+      <div style="background-color: #f9f9f9; border-left: 4px solid #c8a84b; padding: 16px 20px; border-radius: 4px; margin: 0 0 20px 0;">
+        <p style="margin: 0 0 8px 0; color: #a07830; font-weight: bold;">📋 您的報名資訊</p>
+        <p style="margin: 4px 0;">報名姓名：<strong>${name}</strong></p>
+        <p style="margin: 4px 0;">活動名稱：<strong>多品牌分潤創業系統分享會</strong></p>
+        <p style="margin: 4px 0;">場次時間：<strong>${date}</strong></p>
+      </div>
+
+      <p style="margin: 0 0 16px 0;">我們將在活動<strong>前一天與當天</strong>，另行寄送 Zoom 會議連結與活動提醒，請留意信箱！</p>
+
+      <p style="margin: 0 0 20px 0;">如有任何問題，歡迎透過官方 LINE 聯繫我們：<a href="https://lin.ee/RHr2pNi" style="color: #06C755;">https://lin.ee/RHr2pNi</a></p>
+
+      <img src="${CONTENT_IMAGE_URL}" alt="活動內容" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 20px;">
+
+      <p style="margin: 0 0 4px 0;">期待在研討會上與您相見！</p>
+      <p style="margin: 0;"><strong>風霈國際傳媒 敬上</strong></p>
+
     </div>
   `;
   MailApp.sendEmail({ to: to, subject: subject, htmlBody: htmlBody });
