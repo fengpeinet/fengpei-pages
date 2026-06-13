@@ -192,10 +192,13 @@ function sendReminderEmail(to, name, displayDate, link, dayWord) {
 
 function sendRegistrationSuccessEmail(to, name, date) {
   const subject = "✅ 您已成功報名「多品牌分潤創業系統分享會」";
+  const footerUrl = "https://lh3.googleusercontent.com/d/1MAo2woNkcN7-LYjjoL6ZMdlFIToLyz-s";
+  const headUrl = "https://lh3.googleusercontent.com/d/1XG6Co4hBQ0r0Yk5c5Zc-I3zhHftUYt3B";
+  const brandLogoUrl = "https://lh3.googleusercontent.com/d/12c_FvDGcLxbMlDR4caLLjeElunPRiOrB";
   const htmlBody = `
     <div style="font-family: 'Microsoft JhengHei', Arial, sans-serif; color: #333; line-height: 1.8; max-width: 600px; margin: 0 auto;">
 
-      <img src="${POSTER_IMAGE_URL}" alt="多品牌分潤創業系統分享會" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 24px;">
+      <img src="${headUrl}" alt="多品牌分潤創業系統分享會" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 24px;">
 
       <p style="margin: 0 0 8px 0;"><strong>${name}</strong> 您好：</p>
       <p style="margin: 0 0 20px 0;">感謝您報名 <strong>多品牌分潤創業系統分享會</strong>，您的報名已成功完成！</p>
@@ -209,12 +212,23 @@ function sendRegistrationSuccessEmail(to, name, date) {
 
       <p style="margin: 0 0 16px 0;">我們將在活動<strong>前一天與當天</strong>，另行寄送 Zoom 會議連結與活動提醒，請留意信箱！</p>
 
-      <p style="margin: 0 0 20px 0;">如有任何問題，歡迎透過官方 LINE 聯繫我們：<a href="https://lin.ee/RHr2pNi" style="color: #06C755;">https://lin.ee/RHr2pNi</a></p>
+      <p style="margin: 0 0 48px 0;">如有任何問題，歡迎透過官方 LINE 聯繫我們：<a href="https://lin.ee/RHr2pNi">https://lin.ee/RHr2pNi</a></p>
 
-      <img src="${CONTENT_IMAGE_URL}" alt="活動內容" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 20px;">
+      <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 
-      <p style="margin: 0 0 4px 0;">期待在研討會上與您相見！</p>
-      <p style="margin: 0;"><strong>風霈國際傳媒 敬上</strong></p>
+      <table style="width: 100%; max-width: 600px; margin: 0 0 24px 0; border-collapse: collapse;">
+        <tr>
+          <td style="width: 180px; vertical-align: middle; padding-right: 16px;">
+            <img src="${brandLogoUrl}" alt="風霈國際傳媒" style="display: block; width: 160px; height: auto;">
+          </td>
+          <td style="vertical-align: middle;">
+            <p style="margin: 0 0 6px 0; font-size: 14px;">如有問題歡迎詢問官方 LINE：<a href="https://lin.ee/RHr2pNi">https://lin.ee/RHr2pNi</a></p>
+            <p style="margin: 0; color: #999; font-size: 13px;">※ 此信件為系統自動發送，請勿直接回覆此信件。</p>
+          </td>
+        </tr>
+      </table>
+
+      <img src="${footerUrl}" alt="" style="width: 100%; max-width: 600px; display: block;">
 
     </div>
   `;
