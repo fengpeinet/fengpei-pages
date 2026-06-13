@@ -119,28 +119,28 @@ function sendScheduledEmails() {
 // ==========================================
 
 function sendReminderEmail(to, name, displayDate, link, dayWord) {
-  const subject = `📣 ${dayWord}見！多品牌分潤創業系統分享會 活動提醒`;
+  const subject = `📣 ${dayWord}見！多平台分潤創業系統分享會 活動提醒`;
   const footerUrl = "https://lh3.googleusercontent.com/d/1MAo2woNkcN7-LYjjoL6ZMdlFIToLyz-s";
   const headUrl = "https://lh3.googleusercontent.com/d/1XG6Co4hBQ0r0Yk5c5Zc-I3zhHftUYt3B";
   const brandLogoUrl = "https://lh3.googleusercontent.com/d/12c_FvDGcLxbMlDR4caLLjeElunPRiOrB";
   const htmlBody = `
     <div style="font-family: 'Microsoft JhengHei', Arial, sans-serif; color: #333; line-height: 1.8; max-width: 600px; margin: 0 auto;">
 
-      <img src="${headUrl}" alt="多品牌分潤創業系統分享會" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 24px;">
+      <img src="${headUrl}" alt="多平台分潤創業系統分享會" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 24px;">
 
       <p style="margin: 0 0 8px 0;"><strong>${name}</strong> 您好：</p>
-      <p style="margin: 0 0 20px 0;">多品牌分潤創業系統分享會<strong>${dayWord}</strong>就要開始囉！</p>
+      <p style="margin: 0 0 20px 0;">多平台分潤創業系統分享會<strong>${dayWord}</strong>就要開始囉！</p>
 
       <!-- 活動資訊 -->
       <p style="font-weight: bold; margin: 0 0 8px 0;">✅ 活動資訊</p>
-      <p style="margin: 4px 0 4px 16px;">活動名稱：<strong>多品牌分潤創業系統分享會</strong></p>
+      <p style="margin: 4px 0 4px 16px;">活動名稱：<strong>多平台分潤創業系統分享會</strong></p>
       <p style="margin: 4px 0 4px 16px;">活動時間：<strong>${displayDate}</strong></p>
       <p style="margin: 4px 0 20px 16px;">活動形式：線上 Zoom</p>
 
       <!-- 你將會了解 -->
       <p style="font-weight: bold; margin: 0 0 8px 0;">✅ 這場分享會，你將會了解</p>
       <ul style="margin: 0 0 20px 0; padding-left: 20px;">
-        <li style="margin-bottom: 6px;">多品牌分潤的運作邏輯，如何透過多元品牌建立<strong>穩定收入來源</strong></li>
+        <li style="margin-bottom: 6px;">多平台分潤的運作邏輯，如何透過多元品牌建立<strong>穩定收入來源</strong></li>
         <li style="margin-bottom: 6px;">從零開始搭建屬於自己的分潤系統，<strong>不需要囤貨、不需要技術背景</strong></li>
         <li style="margin-bottom: 6px;">一般人也能透過這套系統創造<strong>副業收入</strong>，甚至建立被動收益</li>
         <li style="margin-bottom: 6px;">現場開放提問，協助你釐清<strong>最適合自己的起步方式</strong></li>
@@ -191,22 +191,22 @@ function sendReminderEmail(to, name, displayDate, link, dayWord) {
 }
 
 function sendRegistrationSuccessEmail(to, name, date) {
-  const subject = "✅ 您已成功報名「多品牌分潤創業系統分享會」";
+  const subject = "✅ 您已成功報名「多平台分潤創業系統分享會」";
   const footerUrl = "https://lh3.googleusercontent.com/d/1MAo2woNkcN7-LYjjoL6ZMdlFIToLyz-s";
   const headUrl = "https://lh3.googleusercontent.com/d/1XG6Co4hBQ0r0Yk5c5Zc-I3zhHftUYt3B";
   const brandLogoUrl = "https://lh3.googleusercontent.com/d/12c_FvDGcLxbMlDR4caLLjeElunPRiOrB";
   const htmlBody = `
     <div style="font-family: 'Microsoft JhengHei', Arial, sans-serif; color: #333; line-height: 1.8; max-width: 600px; margin: 0 auto;">
 
-      <img src="${headUrl}" alt="多品牌分潤創業系統分享會" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 24px;">
+      <img src="${headUrl}" alt="多平台分潤創業系統分享會" style="width: 100%; max-width: 600px; display: block; border-radius: 8px; margin-bottom: 24px;">
 
       <p style="margin: 0 0 8px 0;"><strong>${name}</strong> 您好：</p>
-      <p style="margin: 0 0 20px 0;">感謝您報名 <strong>多品牌分潤創業系統分享會</strong>，您的報名已成功完成！</p>
+      <p style="margin: 0 0 20px 0;">感謝您報名 <strong>多平台分潤創業系統分享會</strong>，您的報名已成功完成！</p>
 
       <div style="background-color: #f9f9f9; border-left: 4px solid #c8a84b; padding: 16px 20px; border-radius: 4px; margin: 0 0 20px 0;">
         <p style="margin: 0 0 8px 0; color: #a07830; font-weight: bold;">📋 您的報名資訊</p>
         <p style="margin: 4px 0;">報名姓名：<strong>${name}</strong></p>
-        <p style="margin: 4px 0;">活動名稱：<strong>多品牌分潤創業系統分享會</strong></p>
+        <p style="margin: 4px 0;">活動名稱：<strong>多平台分潤創業系統分享會</strong></p>
         <p style="margin: 4px 0;">場次時間：<strong>${date}</strong></p>
       </div>
 
