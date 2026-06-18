@@ -6,6 +6,19 @@
   <meta name="description" content="多平台分潤創業系統分享會，零成本報名，立刻搶佔名額！" />
   <title>多平台分潤創業系統分享會 · 風霈國際傳媒</title>
 
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','946527011700905');
+  fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=946527011700905&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+
   <style>
     /* ─── Reset ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -794,6 +807,7 @@
   }
 
   function showSuccess() {
+    if (typeof fbq !== 'undefined') fbq('track', 'Lead');
     if (formBody)    formBody.classList.add('hide');
     if (formSuccess) formSuccess.classList.add('show');
     document.getElementById('form').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -810,6 +824,34 @@
     });
   }
 
+})();
+
+// Meta Pixel 滾動追蹤
+(function () {
+  if (typeof fbq === 'undefined') return;
+  var fired = { top: false, cv: false };
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = entry.target.dataset.pixelEvent;
+      if (id === 'top' && !fired.top) {
+        fired.top = true;
+        fbq('track', 'ViewContent');
+      }
+      if (id === 'cv' && !fired.cv) {
+        fired.cv = true;
+        fbq('trackCustom', 'ContentView');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  // TOP：滑過第一張條圖（首圖留存）
+  var strip01 = document.querySelector('.strip[src*="01"]');
+  if (strip01) { strip01.dataset.pixelEvent = 'top'; observer.observe(strip01); }
+
+  // CV：滑到第五張條圖（看完內容）
+  var strip05 = document.querySelector('.strip[src*="05"]');
+  if (strip05) { strip05.dataset.pixelEvent = 'cv'; observer.observe(strip05); }
 })();
 </script>
 
