@@ -24,8 +24,8 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
-      background: #080b14;
-      color: #fff;
+      background: #ffffff;
+      color: #0f172a;
       font-family: -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -37,6 +37,7 @@
     .page {
       max-width: 480px;
       margin: 0 auto;
+      background: #ffffff;
       position: relative;
     }
 
@@ -44,14 +45,14 @@
        HERO
        ═══════════════════════════════ */
     .hero {
-      background: #080b14;
+      background: #ffffff;
       padding: 28px 20px 0;
       position: relative;
       overflow: hidden;
     }
     .hero-brand {
       font-size: 11px;
-      color: rgba(255,255,255,0.3);
+      color: #64748b;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 14px;
@@ -60,8 +61,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(200,168,75,0.1);
-      border: 1px solid rgba(200,168,75,0.4);
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
       border-radius: 4px;
       padding: 5px 12px;
       margin-bottom: 18px;
@@ -69,25 +70,25 @@
     .hero-badge-dot {
       width: 7px; height: 7px;
       border-radius: 50%;
-      background: #c8a84b;
+      background: #f97316;
       flex-shrink: 0;
     }
     .hero-badge-text {
       font-size: 13px;
-      color: #c8a84b;
+      color: #1d4ed8;
       font-weight: 600;
       letter-spacing: 0.06em;
     }
     .hero-title-small {
       font-size: 16px;
-      color: rgba(255,255,255,0.6);
+      color: #64748b;
       font-weight: 400;
       margin-bottom: 4px;
     }
     .hero-title-main {
       font-size: 36px;
       font-weight: 900;
-      color: #fff;
+      color: #0f172a;
       line-height: 1.15;
       margin-bottom: 8px;
       letter-spacing: -0.01em;
@@ -95,13 +96,13 @@
     .hero-event-name {
       font-size: 20px;
       font-weight: 700;
-      color: #c8a84b;
+      color: #2563eb;
       line-height: 1.3;
       margin-bottom: 14px;
     }
     .hero-sub {
       font-size: 15px;
-      color: rgba(255,255,255,0.45);
+      color: #64748b;
       margin-bottom: 18px;
       line-height: 1.7;
     }
@@ -113,16 +114,16 @@
     }
     .hero-tag {
       font-size: 13px;
-      color: rgba(255,255,255,0.5);
-      background: rgba(255,255,255,0.06);
-      border: 0.5px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
+      color: #1d4ed8;
+      background: #eff6ff;
+      border: 0.5px solid #bfdbfe;
+      border-radius: 20px;
       padding: 4px 10px;
     }
     .hero-cta {
       display: block;
-      background: #c8a84b;
-      color: #080b14;
+      background: #f97316;
+      color: #ffffff;
       font-size: 17px;
       font-weight: 800;
       text-align: center;
@@ -136,52 +137,51 @@
 
     /* ─── Countdown ─── */
     .countdown-bar {
-      background: #0c0f1c;
-      border-top: 1px solid rgba(200,168,75,0.2);
-      border-bottom: 1px solid rgba(200,168,75,0.2);
-      padding: 12px 20px;
+      background: #f0f7ff;
+      border-top: 1px solid #bfdbfe;
+      border-bottom: 1px solid #bfdbfe;
+      padding: 24px 20px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
     }
     .countdown-label {
-      font-size: 13px;
-      color: rgba(255,255,255,0.35);
+      font-size: 14px;
+      color: #64748b;
       letter-spacing: 0.06em;
-      flex-shrink: 0;
     }
     .countdown-digits {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
     .cd-block { text-align: center; }
     .cd-num {
-      font-size: 26px;
+      font-size: 52px;
       font-weight: 800;
-      color: #c8a84b;
+      color: #2563eb;
       line-height: 1;
       font-variant-numeric: tabular-nums;
       display: block;
       min-width: 2ch;
     }
     .cd-lbl {
-      font-size: 11px;
-      color: rgba(255,255,255,0.3);
+      font-size: 14px;
+      color: #94a3b8;
       display: block;
-      margin-top: 2px;
+      margin-top: 4px;
     }
     .cd-sep {
-      font-size: 24px;
+      font-size: 48px;
       font-weight: 800;
-      color: rgba(200,168,75,0.4);
-      margin-bottom: 12px;
+      color: #93c5fd;
+      margin-bottom: 22px;
       align-self: flex-start;
     }
     .countdown-ended {
       font-size: 14px;
-      color: #c8a84b;
+      color: #2563eb;
       font-weight: 600;
       text-align: center;
       width: 100%;
@@ -190,31 +190,26 @@
     /* ═══════════════════════════════
        IMAGE STRIPS
        ═══════════════════════════════ */
-    .strip { display: block; width: 100%; background-color: #040608; }
-    .section-gap {
-      height: 24px;
-      background: #040608;
-      border-top: 0.5px solid rgba(255,255,255,0.04);
-      border-bottom: 0.5px solid rgba(255,255,255,0.04);
-    }
+    .strip { display: block; width: 100%; background-color: #ffffff; }
+    .section-gap { display: none; }
 
     /* ─── Mid CTA ─── */
     .mid-cta-wrap {
-      background: #0a0d18;
+      background: #ffffff;
       padding: 16px 20px;
-      border-top: 1px solid rgba(200,168,75,0.25);
+      border-top: 2px solid #f97316;
     }
     .mid-cta-label {
       font-size: 13px;
-      color: rgba(255,255,255,0.35);
+      color: #94a3b8;
       text-align: center;
       margin-bottom: 10px;
       letter-spacing: 0.04em;
     }
     .mid-cta-btn {
       display: block;
-      background: #c8a84b;
-      color: #080b14;
+      background: #f97316;
+      color: #ffffff;
       font-size: 16px;
       font-weight: 800;
       text-align: center;
@@ -229,13 +224,13 @@
        VIDEO
        ═══════════════════════════════ */
     .video-section {
-      background: #0a0d18;
+      background: #f8faff;
       padding: 20px 20px 4px;
-      border-top: 0.5px solid rgba(255,255,255,0.06);
+      border-top: 0.5px solid #e2eaf8;
     }
     .video-label {
       font-size: 13px;
-      color: rgba(200,168,75,0.6);
+      color: #64748b;
       letter-spacing: 0.1em;
       text-align: center;
       margin-bottom: 12px;
@@ -258,108 +253,108 @@
        FORM
        ═══════════════════════════════ */
     .form-section {
-      background: #0c0f1c;
+      background: #ffffff;
       padding: 28px 20px 32px;
-      border-top: 2px solid rgba(200,168,75,0.35);
+      border-top: 2px solid #2563eb;
     }
     .form-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(200,168,75,0.1);
-      border: 0.5px solid rgba(200,168,75,0.35);
-      border-radius: 4px;
-      padding: 3px 9px;
-      margin-bottom: 10px;
+      background: #eff6ff;
+      border: 0.5px solid #bfdbfe;
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 12px;
     }
     .form-eyebrow span {
       font-size: 12px;
-      color: #c8a84b;
+      color: #1d4ed8;
       font-weight: 600;
       letter-spacing: 0.06em;
     }
     .form-title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
-      color: #fff;
+      color: #2563eb;
       margin-bottom: 6px;
     }
     .form-subtitle {
-      font-size: 14px;
-      color: rgba(255,255,255,0.4);
+      font-size: 15px;
+      color: #64748b;
       margin-bottom: 20px;
       line-height: 1.6;
     }
     .form-group { margin-bottom: 14px; }
     .form-label {
       font-size: 13px;
-      color: rgba(255,255,255,0.5);
+      color: #64748b;
       margin-bottom: 6px;
       display: block;
       letter-spacing: 0.04em;
     }
-    .form-label .req { color: #c8a84b; margin-left: 2px; }
+    .form-label .req { color: #f97316; margin-left: 2px; }
     .form-input {
       width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: #f8faff;
+      border: 1px solid #e2eaf8;
       border-radius: 6px;
       padding: 12px 14px;
       font-size: 15px;
-      color: #fff;
+      color: #0f172a;
       outline: none;
       transition: border-color 0.15s;
       font-family: inherit;
       -webkit-appearance: none;
     }
-    .form-input::placeholder { color: rgba(255,255,255,0.25); }
-    .form-input:focus { border-color: rgba(200,168,75,0.6); }
+    .form-input::placeholder { color: #94a3b8; }
+    .form-input:focus { border-color: #93c5fd; }
 
     /* session radio */
     .session-label {
       font-size: 13px;
-      color: rgba(255,255,255,0.5);
+      color: #64748b;
       margin-bottom: 8px;
       display: block;
       letter-spacing: 0.04em;
     }
-    .session-label .req { color: #c8a84b; margin-left: 2px; }
+    .session-label .req { color: #f97316; margin-left: 2px; }
     .session-options { display: flex; flex-direction: column; gap: 8px; }
     .session-option { display: none; }
     .session-option-label {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #f8faff;
+      border: 1px solid #e2eaf8;
       border-radius: 6px;
       padding: 13px 14px;
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
       font-size: 15px;
-      color: rgba(255,255,255,0.6);
+      color: #64748b;
     }
     .session-option:checked + .session-option-label {
-      border-color: rgba(200,168,75,0.6);
-      background: rgba(200,168,75,0.08);
-      color: #fff;
+      border-color: #93c5fd;
+      background: #eff6ff;
+      color: #1d4ed8;
     }
     .session-radio-dot {
       width: 16px; height: 16px;
       border-radius: 50%;
-      border: 1.5px solid rgba(255,255,255,0.25);
+      border: 1.5px solid #bfdbfe;
       flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
       transition: border-color 0.15s;
     }
     .session-option:checked + .session-option-label .session-radio-dot {
-      border-color: #c8a84b;
-      background: rgba(200,168,75,0.2);
+      border-color: #2563eb;
+      background: rgba(37,99,235,0.1);
     }
     .session-radio-inner {
       width: 7px; height: 7px;
       border-radius: 50%;
-      background: #c8a84b;
+      background: #2563eb;
       opacity: 0;
       transition: opacity 0.15s;
     }
@@ -368,8 +363,8 @@
     .form-submit {
       display: block;
       width: 100%;
-      background: #c8a84b;
-      color: #080b14;
+      background: #2563eb;
+      color: #ffffff;
       font-size: 17px;
       font-weight: 800;
       text-align: center;
@@ -387,7 +382,7 @@
 
     .form-privacy {
       font-size: 11px;
-      color: rgba(255,255,255,0.25);
+      color: #cbd5e1;
       text-align: center;
       margin-top: 10px;
       line-height: 1.6;
@@ -403,8 +398,9 @@
     .success-icon {
       width: 52px; height: 52px;
       border-radius: 50%;
-      background: rgba(200,168,75,0.15);
-      border: 1.5px solid rgba(200,168,75,0.5);
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      color: #2563eb;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 14px;
       font-size: 22px;
@@ -412,12 +408,12 @@
     .success-title {
       font-size: 18px;
       font-weight: 700;
-      color: #fff;
+      color: #0f172a;
       margin-bottom: 6px;
     }
     .success-sub {
       font-size: 12px;
-      color: rgba(255,255,255,0.45);
+      color: #64748b;
       margin-bottom: 18px;
       line-height: 1.7;
     }
@@ -438,13 +434,13 @@
        FOOTER
        ═══════════════════════════════ */
     .site-footer {
-      background: #040608;
+      background: #f8faff;
       padding: 20px 20px 100px;
-      border-top: 0.5px solid rgba(255,255,255,0.06);
+      border-top: 0.5px solid #e2eaf8;
     }
     .footer-brand {
       font-size: 11px;
-      color: rgba(255,255,255,0.2);
+      color: #94a3b8;
       letter-spacing: 0.14em;
       text-align: center;
       margin-bottom: 12px;
@@ -452,25 +448,24 @@
       transition: color 0.3s ease;
       cursor: default;
     }
-    .footer-brand:hover {
-      color: #c8a84b;
-    }
+    .footer-brand:hover { color: #2563eb; }
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      flex-wrap: nowrap;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
     }
     .footer-link {
       font-size: 12px;
-      color: rgba(255,255,255,0.3);
+      color: #93c5fd;
       transition: color 0.15s;
     }
-    .footer-link:hover { color: #c8a84b; }
+    .footer-link:hover { color: #2563eb; }
     .footer-link + .footer-link::before {
-      content: '|';
-      margin-right: 8px;
-      color: rgba(255,255,255,0.15);
+      content: '｜';
+      margin: 0 6px;
+      color: #e2eaf8;
       pointer-events: none;
     }
 
@@ -480,8 +475,8 @@
     .sticky-bar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: #0c0f1c;
-      border-top: 1px solid rgba(200,168,75,0.35);
+      background: #ffffff;
+      border-top: 1px solid #bfdbfe;
       padding: 10px 16px;
       display: flex;
       align-items: center;
@@ -491,7 +486,7 @@
     }
     .sticky-bar-text {
       font-size: 13px;
-      color: rgba(255,255,255,0.4);
+      color: #64748b;
       line-height: 1.5;
       flex: 1;
       min-width: 0;
@@ -503,9 +498,9 @@
       background: rgba(6,199,85,0.12);
       border: 1px solid rgba(6,199,85,0.35);
       color: #06C755;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
-      padding: 10px 12px;
+      padding: 10px 14px;
       border-radius: 6px;
       white-space: nowrap;
       flex-shrink: 0;
@@ -513,18 +508,17 @@
     }
     .sticky-bar-line:hover { opacity: 0.88; }
     .sticky-bar-btn {
-      background: #c8a84b;
-      color: #080b14;
-      font-size: 14px;
+      background: #f97316;
+      color: #ffffff;
+      font-size: 13px;
       font-weight: 800;
-      padding: 10px 16px;
+      padding: 10px 14px;
       border-radius: 6px;
       white-space: nowrap;
       flex-shrink: 0;
       transition: opacity 0.15s;
     }
     .sticky-bar-btn:hover { opacity: 0.88; }
-
 
     .form-body.hide { display: none; }
   </style>
@@ -535,22 +529,14 @@
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="hero">
-    <div class="hero-brand">風霈國際傳媒 · FENGPEINET</div>
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      <span class="hero-badge-text">FREE TICKET · 免費線上說明會</span>
+    <div class="hero-brand">
+      <img src="./logo.png" alt="風霈國際傳媒" style="width:32px;height:32px;object-fit:contain;display:inline-block;vertical-align:middle;margin-right:8px;" />
+      <span style="vertical-align:middle;">風霈國際傳媒 · FENGPEINET</span>
     </div>
-    <p class="hero-title-small">讓你擁有的，不只是收入</p>
-    <h1 class="hero-title-main">而是選擇的自由</h1>
-    <p class="hero-event-name">多平台分潤創業系統分享會</p>
-    <p class="hero-sub">從 0 到 1，打造屬於你的自媒體事業<br>新手也能開始 · 完全免費參加</p>
-    <div class="hero-tags">
-      <span class="hero-tag">系統AI帶貨</span>
-      <span class="hero-tag">分潤循環系統</span>
-      <span class="hero-tag">直播短影音社群變現</span>
-    </div>
-    <a href="#form" class="hero-cta">立即搶位 · 限量 0 元報名 ↓</a>
   </section>
+
+  <!-- ═══════════════ STRIP 01 ═══════════════ -->
+  <img class="strip" src="./strips/finalstrips/01.png" alt="星世代帶貨三維度" loading="lazy" />
 
   <!-- ═══════════════ COUNTDOWN ═══════════════ -->
   <div class="countdown-bar">
@@ -577,50 +563,36 @@
       </div>
     </div>
   </div>
-
-  <!-- ═══════════════ STRIP 01 ═══════════════ -->
-  <img class="strip" src="./strips/finalstrips/01.webp" alt="星世代帶貨三維度" loading="lazy" />
-
-  <div class="section-gap"></div>
-
   <!-- ═══════════════ STRIP 02 ═══════════════ -->
-  <img class="strip" src="./strips/finalstrips/02.webp" alt="想增加收入卻不知道從哪開始" loading="lazy" />
+  <img class="strip" src="./strips/finalstrips/02.png" alt="想增加收入卻不知道從哪開始" loading="lazy" />
 
-  <!-- CTA after 02 -->
-  <div class="mid-cta-wrap">
-    <p class="mid-cta-label">看到這裡了嗎？現在報名還有位置</p>
-    <a href="#form" class="mid-cta-btn">立即免費報名 →</a>
-  </div>
 
   <div class="section-gap"></div>
 
   <!-- ═══════════════ STRIP 03–06 ═══════════════ -->
-  <img class="strip" src="./strips/finalstrips/03.webp" alt="" loading="lazy" />
+  <img class="strip" src="./strips/finalstrips/03.png" alt="" loading="lazy" />
   <div class="section-gap"></div>
-  <img class="strip" src="./strips/finalstrips/04.webp" alt="" loading="lazy" />
+  <img class="strip" src="./strips/finalstrips/04.png" alt="" loading="lazy" />
   <div class="section-gap"></div>
-  <img class="strip" src="./strips/finalstrips/05.webp" alt="" loading="lazy" />
+  <img class="strip" src="./strips/finalstrips/05.png" alt="" loading="lazy" />
   <div class="section-gap"></div>
-  <img class="strip" src="./strips/finalstrips/06.webp" alt="" loading="lazy" />
+  <img class="strip" src="./strips/finalstrips/06.png" alt="" loading="lazy" />
 
 
   <div class="section-gap"></div>
 
-  <!-- ═══════════════ STRIP 07–09 ═══════════════ -->
-  <img class="strip" src="./strips/finalstrips/07.webp" alt="" loading="lazy" />
+  <!-- ═══════════════ STRIP 07–08 ═══════════════ -->
+  <img class="strip" src="./strips/finalstrips/07.png" alt="" loading="lazy" />
   <div class="section-gap"></div>
-  <img class="strip" src="./strips/finalstrips/08.webp" alt="" loading="lazy" />
-  <div class="section-gap"></div>
-  <img class="strip" src="./strips/finalstrips/09.webp" alt="" loading="lazy" />
+  <img class="strip" src="./strips/finalstrips/08.png" alt="" loading="lazy" />
 
   <!-- ═══════════════ FORM ═══════════════ -->
   <section class="form-section" id="form">
 
-    <div class="form-eyebrow">
-      <span>立即卡位 · 名額有限，額滿即止</span>
+    <div style="text-align: center;">
+      <h2 class="form-title">想知道這套系統適不適合你？</h2>
+      <p class="form-subtitle">填寫資料 保留席次</p>
     </div>
-    <h2 class="form-title">立即卡位報名</h2>
-    <p class="form-subtitle">填寫下方資料，獲取免費入場資格</p>
 
     <!-- success message -->
     <div class="form-success" id="form-success">
@@ -632,7 +604,7 @@
         加入官方 LINE，掌握最新資訊
       </a>
       <br>
-      <a href="#form" id="register-again" style="font-size:12px;color:rgba(255,255,255,0.35);text-decoration:underline;">為其他人報名</a>
+      <a href="#form" id="register-again" style="font-size:12px;color:#94a3b8;text-decoration:underline;">為其他人報名</a>
     </div>
 
     <!-- form body -->
@@ -652,16 +624,7 @@
         <div class="form-group">
           <label class="form-label" for="f-email">Email<span class="req">*</span></label>
           <input class="form-input" type="email" id="f-email" name="email" placeholder="請輸入您的 Email" required autocomplete="email" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="f-line">LINE ID <span style="opacity:0.5;font-size:10px;">選填</span></label>
-          <input class="form-input" type="text" id="f-line" name="lineId" placeholder="您的 LINE ID（選填）" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="f-referrer">推薦人 <span style="opacity:0.5;font-size:10px;">選填</span></label>
-          <input class="form-input" type="text" id="f-referrer" name="referrer" placeholder="推薦人姓名或 ID（選填）" />
+          <p style="font-size:12px;color:#94a3b8;margin-top:4px;">※ 說明會連結將寄送至此信箱，請確認信箱正確</p>
         </div>
 
         <div class="form-group">
@@ -680,7 +643,7 @@
           </div>
         </div>
 
-        <button class="form-submit" type="submit" id="submit-btn">立即報名</button>
+        <button class="form-submit" type="submit" id="submit-btn">免費報名</button>
 
         <p class="form-privacy">送出表單代表您同意我們的隱私權政策，並同意接收系統發送之提醒信件。</p>
 
@@ -693,9 +656,9 @@
   <footer class="site-footer">
     <p class="footer-brand">FENGPEINET · 風霈國際傳媒</p>
     <div class="footer-links">
-      <a class="footer-link" href="https://www.fpshop.tw/" target="_blank" rel="noopener">風電商官網 fpshop.tw</a>
-      <a class="footer-link" href="https://www.instagram.com/fengpeinet/" target="_blank" rel="noopener">Instagram @fengpeinet</a>
-      <a class="footer-link" href="https://www.facebook.com/profile.php?id=61560506886097&locale=zh_TW" target="_blank" rel="noopener">Facebook 風霈國際傳媒</a>
+      <a class="footer-link" href="https://www.fpshop.tw/" target="_blank" rel="noopener">風電商</a>
+      <a class="footer-link" href="https://www.instagram.com/fengpeinet/" target="_blank" rel="noopener">Instagram</a>
+      <a class="footer-link" href="https://www.facebook.com/profile.php?id=61560506886097&locale=zh_TW" target="_blank" rel="noopener">Facebook</a>
     </div>
   </footer>
 
@@ -704,7 +667,7 @@
 <!-- ═══════════════ BOTTOM STICKY BAR ═══════════════ -->
 <div class="sticky-bar" role="complementary" aria-label="快速報名">
   <div class="sticky-bar-text">
-    多平台分潤創業系統分享會<br>名額有限，額滿即止
+    名額有限，額滿即止
   </div>
   <a href="https://line.me/R/ti/p/@fp_media" class="sticky-bar-line" target="_blank" rel="noopener" aria-label="加入官方 LINE">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="#06C755" aria-hidden="true"><path d="M12 2C6.48 2 2 5.92 2 10.72c0 3.2 2.01 6.01 5.04 7.64-.17.64-.63 2.33-.72 2.69-.12.45.16.44.34.32.14-.09 2.22-1.51 3.12-2.13.39.06.79.09 1.22.09 5.52 0 10-3.92 10-8.72C22 5.92 17.52 2 12 2z"/></svg>
@@ -785,8 +748,8 @@
         name:        name,
         phone:       phone,
         email:       email,
-        lineId:      document.getElementById('f-line').value.trim(),
-        referrer:    document.getElementById('f-referrer').value.trim(),
+        lineId:      '',
+        referrer:    '',
         sessionDate: session.value,
         timestamp:   new Date().toISOString()
       };
@@ -800,7 +763,7 @@
         showSuccess();
       }).catch(function () {
         alert('報名發生錯誤，請稍後再試或聯絡承辦單位！');
-        submitBtn.textContent = '立即報名';
+        submitBtn.textContent = '免費報名';
         submitBtn.disabled    = false;
       });
     });
