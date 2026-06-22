@@ -802,7 +802,7 @@
 // Meta Pixel 滾動追蹤
 (function () {
   if (typeof fbq === 'undefined') return;
-  var fired = { top: false, cv: false, bottom: false };
+  var fired = { top: false, cv: false, bottom: false, form: false };
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
@@ -819,6 +819,10 @@
         fired.bottom = true;
         fbq('trackCustom', 'ReachBottom');
       }
+      if (id === 'form' && !fired.form) {
+        fired.form = true;
+        fbq('trackCustom', 'ViewForm');
+      }
     });
   }, { threshold: 0.3 });
 
@@ -833,6 +837,10 @@
   // BOTTOM：滑到第八張條圖（看完全頁）
   var strip08 = document.querySelector('.strip[src*="08"]');
   if (strip08) { strip08.dataset.pixelEvent = 'bottom'; observer.observe(strip08); }
+
+  // FORM：滑到表單區（看到問卷但未必填寫）
+  var formSection = document.querySelector('.form-section');
+  if (formSection) { formSection.dataset.pixelEvent = 'form'; observer.observe(formSection); }
 })();
 </script>
 
