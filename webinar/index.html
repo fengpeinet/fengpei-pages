@@ -36,8 +36,16 @@
     /* ─── Layout wrapper ─── */
     .page {
       width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
       background: #ffffff;
       position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        max-width: 100%;
+      }
     }
 
     /* ═══════════════════════════════
