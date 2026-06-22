@@ -582,6 +582,9 @@
   <img class="strip" src="./strips/finalstrips/04.webp" alt="" loading="lazy" />
   <div class="section-gap"></div>
   <img class="strip" src="./strips/finalstrips/05.webp" alt="" loading="lazy" />
+  <div style="padding: 20px 16px;">
+    <a href="#form" class="mid-cta-btn">免費報名說明會 →</a>
+  </div>
   <div class="section-gap"></div>
   <img class="strip" src="./strips/finalstrips/06.webp" alt="" loading="lazy" />
 
@@ -799,7 +802,7 @@
 // Meta Pixel 滾動追蹤
 (function () {
   if (typeof fbq === 'undefined') return;
-  var fired = { top: false, cv: false };
+  var fired = { top: false, cv: false, bottom: false };
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
@@ -812,6 +815,10 @@
         fired.cv = true;
         fbq('trackCustom', 'ContentView');
       }
+      if (id === 'bottom' && !fired.bottom) {
+        fired.bottom = true;
+        fbq('trackCustom', 'ReachBottom');
+      }
     });
   }, { threshold: 0.3 });
 
@@ -822,6 +829,10 @@
   // CV：滑到第五張條圖（看完內容）
   var strip05 = document.querySelector('.strip[src*="05"]');
   if (strip05) { strip05.dataset.pixelEvent = 'cv'; observer.observe(strip05); }
+
+  // BOTTOM：滑到第八張條圖（看完全頁）
+  var strip08 = document.querySelector('.strip[src*="08"]');
+  if (strip08) { strip08.dataset.pixelEvent = 'bottom'; observer.observe(strip08); }
 })();
 </script>
 
