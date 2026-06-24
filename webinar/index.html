@@ -648,17 +648,22 @@
         </div>
 
         <div class="form-group">
+          <label class="form-label" for="f-referrer">推薦人</label>
+          <input class="form-input" type="text" id="f-referrer" name="referrer" placeholder="填入介紹你來的人的暱稱（選填）" />
+        </div>
+
+        <div class="form-group">
           <span class="session-label">選擇場次<span class="req">*</span></span>
           <div class="session-options">
-            <input class="session-option" type="radio" name="sessionDate" id="s1" value="2026/06/23 20:00" required />
+            <input class="session-option" type="radio" name="sessionDate" id="s1" value="2026/06/27 14:00" required />
             <label class="session-option-label" for="s1">
               <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
-              第一場 &nbsp;6/23 (二) 20:00
+              第一場 &nbsp;6/27 (六) 14:00
             </label>
-            <input class="session-option" type="radio" name="sessionDate" id="s2" value="2026/06/27 14:00" />
+            <input class="session-option" type="radio" name="sessionDate" id="s2" value="2026/07/02 14:00" />
             <label class="session-option-label" for="s2">
               <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
-              第二場 &nbsp;6/27 (六) 14:00
+              第二場 &nbsp;7/2 (四) 14:00
             </label>
           </div>
         </div>
@@ -742,6 +747,12 @@
   var formSuccess = document.getElementById('form-success');
   var againLink   = document.getElementById('register-again');
 
+  var refParam = new URLSearchParams(location.search).get('ref');
+  if (refParam) {
+    var refField = document.getElementById('f-referrer');
+    if (refField) refField.value = decodeURIComponent(refParam);
+  }
+
   if (new URLSearchParams(location.search).has('preview')) {
     if (formBody)    formBody.classList.add('hide');
     if (formSuccess) formSuccess.classList.add('show');
@@ -769,7 +780,7 @@
         phone:       phone,
         email:       email,
         lineId:      '',
-        referrer:    '',
+        referrer:    document.getElementById('f-referrer').value.trim(),
         sessionDate: session.value,
         timestamp:   new Date().toISOString()
       };
