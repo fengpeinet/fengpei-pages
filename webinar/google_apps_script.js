@@ -6,8 +6,12 @@
 //   一、 營運設定區 (連結與圖片)
 // ==========================================
 
-const ZOOM_LINK_6_27 = "https://us06web.zoom.us/j/3909390259?omn=86561959573";
-const ZOOM_LINK_7_02 = "https://us06web.zoom.us/j/3909390259?omn=86892945690";
+const ZOOM_LINKS = {
+  "6-27": "https://us06web.zoom.us/j/3909390259?omn=86561959573",
+  "7-2":  "https://us06web.zoom.us/j/3909390259?omn=86892945690",
+  "7-4":  "https://us06web.zoom.us/j/3909390259?omn=88083052688",
+  "7-7":  "https://us06web.zoom.us/j/3909390259?omn=88157101981",
+};
 
 const HEAD_IMAGE_URL = "https://lh3.googleusercontent.com/d/1XG6Co4hBQ0r0Yk5c5Zc-I3zhHftUYt3B";
 const FOOTER_IMAGE_URL = "https://lh3.googleusercontent.com/d/1MAo2woNkcN7-LYjjoL6ZMdlFIToLyz-s";
@@ -85,7 +89,7 @@ function sendScheduledEmails() {
 
     console.log("正在檢查: " + userName + " | 場次: " + targetDateStr);
 
-    let zoomLink = targetDateStr.includes("-7-2") ? ZOOM_LINK_7_02 : ZOOM_LINK_6_27;
+    let zoomLink = Object.entries(ZOOM_LINKS).find(([k]) => targetDateStr.includes("-" + k))?.[1];
 
     // --- 今日提醒 ---
     if (targetDateStr === todayStr) {
