@@ -376,6 +376,88 @@
       transition: opacity 0.15s;
     }
     .session-option:checked + .session-option-label .session-radio-inner { opacity: 1; }
+    #s-no:checked + .session-option-label--no {
+      border-color: #fdba74;
+      background: #fff7ed;
+      color: #c2410c;
+    }
+    #s-no:checked + .session-option-label--no .session-radio-dot {
+      border-color: #f97316;
+      background: rgba(249,115,22,0.1);
+    }
+    #s-no:checked + .session-option-label--no .session-radio-inner {
+      background: #f97316;
+    }
+
+    /* no-session panel */
+    .no-session-panel {
+      display: none;
+      margin-top: 12px;
+      background: #ffffff;
+      border: 1px solid #e2eaf8;
+      border-top: 3px solid #f97316;
+      border-radius: 8px;
+      padding: 18px 16px 16px;
+    }
+    .no-session-panel.show { display: block; }
+    .no-session-title {
+      font-size: 15px;
+      color: #0f172a;
+      font-weight: 800;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .no-session-steps {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 14px;
+      line-height: 2;
+    }
+    .copy-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8faff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+    .copy-text {
+      flex: 1;
+      font-size: 14px;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .copy-btn {
+      background: #f97316;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+      font-family: inherit;
+    }
+    .copy-btn:hover { opacity: 0.85; }
+    .no-session-line-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #06C755;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 13px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .no-session-line-btn:hover { opacity: 0.88; }
 
     .form-submit {
       display: block;
@@ -665,7 +747,31 @@
               <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
               第二場 &nbsp;7/2 (四) 14:00
             </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s-no" value="no-session" />
+            <label class="session-option-label session-option-label--no" for="s-no">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              以上場次都不適合我
+            </label>
           </div>
+
+          <!-- no-session panel -->
+          <div class="no-session-panel" id="no-session-panel">
+            <p class="no-session-title">歡迎加入風霈官方LINE，<br>申請限量一對一專人諮詢服務：</p>
+            <p class="no-session-steps">
+              1️⃣ 點下方按鈕複製文字<br>
+              2️⃣ 加入風霈官方 LINE<br>
+              3️⃣ 貼上傳送，預約完成 ✅
+            </p>
+            <div class="copy-row">
+              <span class="copy-text">我要申請免費限量一對一諮詢</span>
+              <button class="copy-btn" id="copy-btn" type="button">複製</button>
+            </div>
+            <a href="https://line.me/R/ti/p/@fp_media" class="no-session-line-btn" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.92 2 10.72c0 3.2 2.01 6.01 5.04 7.64-.17.64-.63 2.33-.72 2.69-.12.45.16.44.34.32.14-.09 2.22-1.51 3.12-2.13.39.06.79.09 1.22.09 5.52 0 10-3.92 10-8.72C22 5.92 17.52 2 12 2z"/></svg>
+              加入官方 LINE
+            </a>
+          </div>
+
         </div>
 
         <button class="form-submit" type="submit" id="submit-btn">免費報名</button>
@@ -767,7 +873,7 @@
       var email   = document.getElementById('f-email').value.trim();
       var session = form.querySelector('input[name="sessionDate"]:checked');
 
-      if (!name || !email || !session) {
+      if (!name || !email || !session || session.value === 'no-session') {
         alert('請填寫暱稱、Email 並選擇場次');
         return;
       }
@@ -815,6 +921,57 @@
       if (form) form.reset();
       submitBtn.textContent = '立即報名';
       submitBtn.disabled    = false;
+      noSessionPanel.classList.remove('show');
+      submitBtn.style.display = '';
+    });
+  }
+
+  /* ── No-session toggle ── */
+  var noSessionPanel = document.getElementById('no-session-panel');
+  var sessionRadios  = document.querySelectorAll('input[name="sessionDate"]');
+
+  sessionRadios.forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      if (this.value === 'no-session') {
+        noSessionPanel.classList.add('show');
+        submitBtn.style.display = 'none';
+      } else {
+        noSessionPanel.classList.remove('show');
+        submitBtn.style.display = '';
+      }
+    });
+  });
+
+  /* ── Copy button ── */
+  var copyBtn = document.getElementById('copy-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var text = '我要申請免費限量一對一諮詢';
+
+      function onCopied() {
+        copyBtn.textContent = '已複製 ✓';
+        copyBtn.style.background = '#16a34a';
+        setTimeout(function () {
+          copyBtn.textContent = '複製';
+          copyBtn.style.background = '';
+        }, 2000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(onCopied).catch(function () { fallbackCopy(text); });
+      } else {
+        fallbackCopy(text);
+      }
+
+      function fallbackCopy(t) {
+        var ta = document.createElement('textarea');
+        ta.value = t;
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        try { document.execCommand('copy'); onCopied(); } catch (err) {}
+        document.body.removeChild(ta);
+      }
     });
   }
 
