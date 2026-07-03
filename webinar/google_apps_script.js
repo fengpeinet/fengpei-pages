@@ -11,6 +11,7 @@ const ZOOM_LINKS = {
   "7-2":  "https://us06web.zoom.us/j/3909390259?omn=86892945690",
   "7-4":  "https://us06web.zoom.us/j/3909390259?omn=88083052688",
   "7-7":  "https://us06web.zoom.us/j/3909390259?omn=88157101981",
+  "7-14": "https://us06web.zoom.us/j/3909390259?omn=84022138651",
 };
 
 const HEAD_IMAGE_URL = "https://lh3.googleusercontent.com/d/1XG6Co4hBQ0r0Yk5c5Zc-I3zhHftUYt3B";
