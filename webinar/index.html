@@ -737,15 +737,50 @@
         <div class="form-group">
           <span class="session-label">選擇場次<span class="req">*</span></span>
           <div class="session-options">
-            <input class="session-option" type="radio" name="sessionDate" id="s1" value="2026/07/21 20:00" required />
+            <input class="session-option" type="radio" name="sessionDate" id="s1" value="2026/07/25 14:00" required />
             <label class="session-option-label" for="s1">
               <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
-              第一場 &nbsp;7/21 (二) 20:00
+              第一場 &nbsp;7/25 (六) 14:00
             </label>
-            <input class="session-option" type="radio" name="sessionDate" id="s2" value="2026/07/25 14:00" />
+            <input class="session-option" type="radio" name="sessionDate" id="s2" value="2026/07/27 20:00" />
             <label class="session-option-label" for="s2">
               <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
-              第二場 &nbsp;7/25 (六) 14:00
+              第二場 &nbsp;7/27 (一) 20:00
+            </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s3" value="2026/08/01 14:00" />
+            <label class="session-option-label" for="s3">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第三場 &nbsp;8/1 (六) 14:00
+            </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s4" value="2026/08/04 20:00" />
+            <label class="session-option-label" for="s4">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第四場 &nbsp;8/4 (二) 20:00
+            </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s5" value="2026/08/06 14:00" />
+            <label class="session-option-label" for="s5">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第五場 &nbsp;8/6 (四) 14:00
+            </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s6" value="2026/08/11 20:00" />
+            <label class="session-option-label" for="s6">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第六場 &nbsp;8/11 (二) 20:00
+            </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s7" value="2026/08/20 14:00" />
+            <label class="session-option-label" for="s7">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第七場 &nbsp;8/20 (四) 14:00
+            </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s8" value="2026/08/25 20:00" />
+            <label class="session-option-label" for="s8">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第八場 &nbsp;8/25 (二) 20:00
+            </label>
+            <input class="session-option" type="radio" name="sessionDate" id="s9" value="2026/08/29 14:00" />
+            <label class="session-option-label" for="s9">
+              <div class="session-radio-dot"><div class="session-radio-inner"></div></div>
+              第九場 &nbsp;8/29 (六) 14:00
             </label>
             <input class="session-option" type="radio" name="sessionDate" id="s-no" value="no-session" />
             <label class="session-option-label session-option-label--no" for="s-no">
@@ -812,7 +847,7 @@
 (function () {
 
   /* ── Countdown ── */
-  var target = new Date('2026-07-21T20:00:00+08:00');
+  var target = new Date('2026-07-25T14:00:00+08:00');
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
