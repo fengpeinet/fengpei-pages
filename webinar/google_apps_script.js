@@ -26,6 +26,7 @@ const ZOOM_LINKS = {
 };
 
 const WEBINAR_URL = "https://fengpeinet.github.io/fengpei-pages/webinar/";
+const REBOOK_URL = "https://fengpeinet.github.io/fengpei-pages/webinar/?utm_source=facebook&utm_medium=share&ref=更換場次專用";
 
 const HEAD_IMAGE_URL = "https://lh3.googleusercontent.com/d/1XG6Co4hBQ0r0Yk5c5Zc-I3zhHftUYt3B";
 const FOOTER_IMAGE_URL = "https://lh3.googleusercontent.com/d/1MAo2woNkcN7-LYjjoL6ZMdlFIToLyz-s";
@@ -350,7 +351,7 @@ function sendRecallEmail(to, name, nextDisplayDate, zoomLink) {
           <a href="${zoomLink}" style="background-color: #ff6600; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 16px;">立即進入 Zoom 研討會</a>
         </p>
         <p style="text-align: center; margin: 0;">
-          <a href="${WEBINAR_URL}" style="color: #1a73e8; font-size: 13px; text-decoration: underline;">這個時間無法上線？看看其他場次！</a>
+          <a href="${REBOOK_URL}" style="color: #1a73e8; font-size: 13px; text-decoration: underline;">這個時間無法上線？看看其他場次！</a>
         </p>
       </div>
 
@@ -373,7 +374,7 @@ function sendRecallEmail(to, name, nextDisplayDate, zoomLink) {
           </td>
           <td style="vertical-align: middle;">
             <p style="margin: 0 0 6px 0; font-size: 14px;">如有問題歡迎詢問官方 LINE：<a href="https://lin.ee/RHr2pNi">https://lin.ee/RHr2pNi</a></p>
-            <p style="margin: 0 0 6px 0; font-size: 14px;"><a href="${WEBINAR_URL}" style="color: #1a73e8; text-decoration: underline;">這個時間無法上線？看看其他場次！</a></p>
+            <p style="margin: 0 0 6px 0; font-size: 14px;"><a href="${REBOOK_URL}" style="color: #1a73e8; text-decoration: underline;">這個時間無法上線？看看其他場次！</a></p>
             <p style="margin: 0; color: #999; font-size: 13px;">※ 此信件為系統自動發送，請勿直接回覆此信件。</p>
           </td>
         </tr>
