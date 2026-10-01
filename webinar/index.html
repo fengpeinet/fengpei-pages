@@ -912,7 +912,7 @@
   }
 
   function showSuccess() {
-    if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+    if (typeof fbq !== 'undefined') fbq('track', 'Lead', { currency: 'TWD', value: 16800 });
     if (formBody)    formBody.classList.add('hide');
     if (formSuccess) formSuccess.classList.add('show');
     document.getElementById('form').scrollIntoView({ behavior: 'smooth', block: 'start' });
